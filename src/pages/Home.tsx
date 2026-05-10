@@ -64,13 +64,38 @@ export default function Home() {
     },
   });
 
-  const onSubmit = (data: ContactFormValues) => {
-    toast({
-      title: "Message Sent",
-      description: "Thank you for getting in touch. We will respond shortly.",
+  const onSubmit = async (data: ContactFormValues) => {
+  try {
+    const response = await fetch("https://formspree.io/f/xkoypzag", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
     });
-    form.reset();
-  };
+    
+    if (response.ok) {
+      toast({
+        title: "Message Sent",
+        description: "Thank you for getting in touch. We will respond shortly.",
+      });
+      form.reset();
+    } else {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
+  } catch (error) {
+    toast({
+      title: "Error",
+      description: "Something went wrong. Please try again.",
+      variant: "destructive",
+    });
+  }
+};
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
