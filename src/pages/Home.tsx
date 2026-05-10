@@ -64,12 +64,33 @@ export default function Home() {
     },
   });
 
-  const onSubmit = (data: ContactFormValues) => {
-    toast({
-      title: "Message Sent",
-      description: "Thank you for getting in touch. We will respond shortly.",
-    });
-    form.reset();
+  const onSubmit = async (data: ContactFormValues) => {
+    try {
+      const body = new URLSearchParams({
+        "form-name": "contact",
+        ...data,
+      } as Record<string, string>).toString();
+
+      const res = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+
+      if (!res.ok) throw new Error("Submission failed");
+
+      toast({
+        title: "Message Sent",
+        description: "Thank you for getting in touch. We will respond shortly.",
+      });
+      form.reset();
+    } catch {
+      toast({
+        title: "Submission Failed",
+        description: "Something went wrong. Please try again or email us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -405,13 +426,18 @@ export default function Home() {
             <div className="grid md:grid-cols-5 gap-12 lg:gap-24">
               <div className="md:col-span-3 bg-card rounded-xl border shadow-sm p-6 md:p-8">
                 <Form {...form}>
-                  <form 
-                    onSubmit={form.handleSubmit(onSubmit)} 
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-6"
                     data-netlify="true"
+                    netlify-honeypot="bot-field"
                     name="contact"
+                    method="POST"
                   >
                     <input type="hidden" name="form-name" value="contact" />
+                    <p style={{ display: "none" }}>
+                      <label>Don't fill this out: <input name="bot-field" /></label>
+                    </p>
                     
                     <div className="grid sm:grid-cols-2 gap-6">
                       <FormField
