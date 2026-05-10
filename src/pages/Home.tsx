@@ -66,14 +66,20 @@ export default function Home() {
 
   const onSubmit = async (data: ContactFormValues) => {
   try {
-    const response = await fetch("https://formspree.io/f/xkoypzag", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+const formData = new FormData();
+formData.append("name", data.name);
+formData.append("business", data.business);
+formData.append("email", data.email);
+formData.append("phone", data.phone || "");
+formData.append("message", data.message);
+
+const response = await fetch("https://formspree.io/f/xkoypzag", {
+  method: "POST",
+  body: formData,
+  headers: {
+    Accept: "application/json",
+  },
+});
     
     if (response.ok) {
       toast({
