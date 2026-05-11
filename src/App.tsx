@@ -18,7 +18,7 @@ function AppRouter() {
 
 function App() {
   return (
-    <Router base="/Harbour-Arch-Trading">
+    <Router base="/">
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <AppRouter />
