@@ -5,7 +5,7 @@ import imgTowels from "../assets/AdobeStock_365294624_1778384305501.jpeg";
 import imgBedding from "../assets/AdobeStock_78653038_1778384305500.jpeg";
 import imgHero from "../assets/AdobeStock_275286434_1778384305500.jpeg";
 import imgBathMat from "../assets/bath-mat.png";
-import imgBedSheets from "../assets/bes-sheet-1.png";
+import imgBedSheets from "../assets/bed-sheet-1.png";
 import imgHandTowel from "../assets/hand-towel.png";
 import imgPillowcase from "../assets/pillow-case.jpg";
 import {
