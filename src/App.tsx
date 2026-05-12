@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import PacksSection from "./components/PacksSection";
+=======
+>>>>>>> c74a1700dab43502ea6f630788d451a0f8fa8304
 import { Router, Switch, Route } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";

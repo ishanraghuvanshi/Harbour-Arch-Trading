@@ -39,8 +39,11 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 
+<<<<<<< HEAD
 import PacksSection from "../components/PacksSection";
 
+=======
+>>>>>>> c74a1700dab43502ea6f630788d451a0f8fa8304
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
   business: z.string().min(2, "Business name is required"),
@@ -224,7 +227,10 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
             <a href="#products" className="transition-colors hover:text-primary text-muted-foreground">Products</a>
+<<<<<<< HEAD
             <a href="#packs" className="transition-colors hover:text-primary text-muted-foreground">Packs</a>
+=======
+>>>>>>> c74a1700dab43502ea6f630788d451a0f8fa8304
             <a href="#about" className="transition-colors hover:text-primary text-muted-foreground">About</a>
             <a href="#contact" className="transition-colors hover:text-primary text-muted-foreground">Contact</a>
             <Button asChild className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
@@ -246,7 +252,10 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
         {mobileMenuOpen && (
           <div className="md:hidden border-b bg-background px-4 py-4 space-y-4 shadow-lg absolute w-full left-0 top-16">
             <a onClick={closeMobileMenu} href="#products" className="block text-sm font-medium hover:text-primary">Products</a>
+<<<<<<< HEAD
             <a onClick={closeMobileMenu} href="#packs" className="block text-sm font-medium hover:text-primary">Products</a>
+=======
+>>>>>>> c74a1700dab43502ea6f630788d451a0f8fa8304
             <a onClick={closeMobileMenu} href="#about" className="block text-sm font-medium hover:text-primary">About</a>
             <a onClick={closeMobileMenu} href="#contact" className="block text-sm font-medium hover:text-primary">Contact</a>
             <Button asChild className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground" onClick={closeMobileMenu}>
@@ -299,7 +308,11 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
+<<<<<<< HEAD
                     Local supplier providing reliable service to NSW businesses without offshore middlemen.
+=======
+                    Local supplier providing  service to NSW businesses without offshore middlemen.
+>>>>>>> c74a1700dab43502ea6f630788d451a0f8fa8304
                   </p>
                 </CardContent>
               </Card>
@@ -391,11 +404,14 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
           </div>
         </section>
 
+<<<<<<< HEAD
         <PacksSection />
 
         {/* 5. ABOUT */}
         <section id="about" className="py-24 bg-primary text-primary-foreground"></section>
 
+=======
+>>>>>>> c74a1700dab43502ea6f630788d451a0f8fa8304
         {/* 5. ABOUT */}
         <section id="about" className="py-24 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 max-w-4xl">
@@ -419,7 +435,11 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                   <PackageCheck className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="font-semibold text-lg">Practical Sourcing</h3>
+<<<<<<< HEAD
                 <p className="text-primary-foreground/70 text-sm">Reliable supply chains focused on utility and durability.</p>
+=======
+                <p className="text-primary-foreground/70 text-sm">Direct-sourced from certified textile mills, confirmed to spec.</p>
+>>>>>>> c74a1700dab43502ea6f630788d451a0f8fa8304
               </div>
               <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
                 <div className="bg-primary-foreground/10 p-3 rounded-full">
