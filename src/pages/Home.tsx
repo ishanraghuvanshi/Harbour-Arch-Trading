@@ -4,10 +4,10 @@ import logoPath from "../assets/logo_transparent.png";
 import imgTowels from "../assets/AdobeStock_365294624_1778384305501.jpeg";
 import imgBedding from "../assets/AdobeStock_78653038_1778384305500.jpeg";
 import imgHero from "../assets/AdobeStock_275286434_1778384305500.jpeg";
-import imgBathMat from "../assets/Bath_mat_1778388340029.jpg";
-import imgBedSheets from "../assets/Bed_sheets_1778388340029.jpg";
-import imgHandTowel from "../assets/Hand_towel_1778388340030.jpg";
-import imgPillowcase from "../assets/Pillowcase_1778388340030.jpg";
+import imgBathMat from "../assets/bath-mat.png";
+import imgBedSheets from "../assets/bes-sheet-1.png";
+import imgHandTowel from "../assets/hand-towel.png";
+import imgPillowcase from "../assets/pillow-case.jpg";
 import {
   Anchor,
   Menu,
