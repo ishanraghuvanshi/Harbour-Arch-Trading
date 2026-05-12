@@ -295,7 +295,7 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Local supplier providing reliable service to NSW businesses without offshore middlemen.
+                    Local supplier providing  service to NSW businesses without offshore middlemen.
                   </p>
                 </CardContent>
               </Card>
@@ -410,7 +410,7 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                   <PackageCheck className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="font-semibold text-lg">Practical Sourcing</h3>
-                <p className="text-primary-foreground/70 text-sm">Reliable supply chains focused on utility and durability.</p>
+                <p className="text-primary-foreground/70 text-sm">Direct-sourced from certified textile mills, confirmed to spec.</p>
               </div>
               <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
                 <div className="bg-primary-foreground/10 p-3 rounded-full">
