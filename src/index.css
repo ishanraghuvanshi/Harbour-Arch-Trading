@@ -206,3 +206,80 @@ html {
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+.services-page {
+  background-color: #ffffff;
+}
+
+.services-hero {
+  padding: 4rem 1.5rem 2rem;
+  background-color: #fafafa;
+}
+
+.services-hero .container {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services-hero h1 {
+  margin-bottom: 1rem;
+}
+
+.services-hero p {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.service-block {
+  padding: 3rem 1.5rem;
+}
+
+.service-block:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+
+.service-block:nth-of-type(even) {
+  background-color: #fafafa;
+}
+
+.service-block .container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.service-tagline {
+  margin-bottom: 1.5rem;
+  max-width: 720px;
+}
+
+.service-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.service-column ul {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+.service-column li + li {
+  margin-top: 0.35rem;
+}
+
+.services-cta-global {
+  padding: 3rem 1.5rem 4rem;
+  background-color: #111827;
+  color: #ffffff;
+  text-align: center;
+}
+
+.services-cta-global .container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.services-cta-global a {
+  color: #e5e7eb;
+  text-decoration: underline;
+}

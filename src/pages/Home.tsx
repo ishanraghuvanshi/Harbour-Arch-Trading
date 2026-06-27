@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import logoPath from "../assets/logo_transparent.png";
 import imgTowels from "../assets/AdobeStock_365294624_1778384305501.jpeg";
 import imgBedding from "../assets/AdobeStock_78653038_1778384305500.jpeg";
-import imgHero from "../assets/AdobeStock_275286434_1778384305500.jpeg";
+import imgHero from "../assets/hero-trading-harbour.jpg";
 import imgBathMat from "../assets/bath-mat.png";
 import imgBedSheets from "../assets/bed-sheet-1.png";
 import imgHandTowel from "../assets/hand-towel.png";
@@ -222,17 +222,48 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
             </div>
           </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#products" className="transition-colors hover:text-primary text-muted-foreground">Products</a>
-            <a href="#packs" className="transition-colors hover:text-primary text-muted-foreground">Packs</a>
-            <a href="#about" className="transition-colors hover:text-primary text-muted-foreground">About</a>
-            <a href="#contact" className="transition-colors hover:text-primary text-muted-foreground">Contact</a>
-            <Button asChild className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-              <a href="#contact">Request a Quote</a>
-            </Button>
-          </nav>
-
+{/* Desktop Nav */}
+<nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+  <Link
+    href="/"
+    className="transition-colors hover:text-primary text-muted-foreground"
+  >
+    Home
+  </Link>
+  <a
+    href="/#products"
+    className="transition-colors hover:text-primary text-muted-foreground"
+  >
+    Products
+  </a>
+  <a
+    href="/#packs"
+    className="transition-colors hover:text-primary text-muted-foreground"
+  >
+    Packs
+  </a>
+  <Link
+    href="/services"
+    className="transition-colors hover:text-primary text-muted-foreground"
+  >
+    Services
+  </Link>
+  <a
+    href="/#about"
+    className="transition-colors hover:text-primary text-muted-foreground"
+  >
+    About
+  </a>
+  <a
+    href="/#contact"
+    className="transition-colors hover:text-primary text-muted-foreground"
+  >
+    Contact
+  </a>
+  <Button asChild className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+    <a href="/#contact">Request a Quote</a>
+  </Button>
+</nav>
           {/* Mobile Menu Toggle */}
           <button
             className="md:hidden p-2 text-foreground"
@@ -243,18 +274,60 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
           </button>
         </div>
 
-        {/* Mobile Nav Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-b bg-background px-4 py-4 space-y-4 shadow-lg absolute w-full left-0 top-16">
-            <a onClick={closeMobileMenu} href="#products" className="block text-sm font-medium hover:text-primary">Products</a>
-            <a onClick={closeMobileMenu} href="#packs" className="block text-sm font-medium hover:text-primary">Packs</a>
-            <a onClick={closeMobileMenu} href="#about" className="block text-sm font-medium hover:text-primary">About</a>
-            <a onClick={closeMobileMenu} href="#contact" className="block text-sm font-medium hover:text-primary">Contact</a>
-            <Button asChild className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground" onClick={closeMobileMenu}>
-              <a href="#contact">Request a Quote</a>
-            </Button>
-          </div>
-        )}
+{/* Mobile Nav Dropdown */}
+{mobileMenuOpen && (
+  <div className="md:hidden border-b bg-background px-4 py-4 space-y-4 shadow-lg absolute w-full left-0 top-16">
+    <Link
+      href="/"
+      onClick={closeMobileMenu}
+      className="block text-sm font-medium hover:text-primary"
+    >
+      Home
+    </Link>
+    <a
+      onClick={closeMobileMenu}
+      href="/#products"
+      className="block text-sm font-medium hover:text-primary"
+    >
+      Products
+    </a>
+    <a
+      onClick={closeMobileMenu}
+      href="/#packs"
+      className="block text-sm font-medium hover:text-primary"
+    >
+      Packs
+    </a>
+    <Link
+      href="/services"
+      onClick={closeMobileMenu}
+      className="block text-sm font-medium hover:text-primary"
+    >
+      Services
+    </Link>
+    <a
+      onClick={closeMobileMenu}
+      href="/#about"
+      className="block text-sm font-medium hover:text-primary"
+    >
+      About
+    </a>
+    <a
+      onClick={closeMobileMenu}
+      href="/#contact"
+      className="block text-sm font-medium hover:text-primary"
+    >
+      Contact
+    </a>
+    <Button
+      asChild
+      className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+      onClick={closeMobileMenu}
+    >
+      <a href="/#contact">Request a Quote</a>
+    </Button>
+  </div>
+)}
       </header>
 
       <main className="flex-1">
@@ -262,12 +335,13 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
         <section className="py-20 md:py-32 container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-primary leading-tight">
-                Quality Hospitality Linen for Sydney Businesses
-              </h1>
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Harbour Arch Trading supplies commercial-grade towels, sheets, pillowcases, and bath mats for hotels, serviced apartments, and short-term rental properties in Sydney.
-              </p>
+<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-primary leading-tight">
+  Hospitality Linen &amp; Trading Services for Australian Businesses
+</h1>
+<p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+  Harbour Arch Trading provides CPA-led import sourcing and export agency services for Australian businesses
+  that want clearer, more reliable product trade.We also specialise in supplying commercial-grade hospitality linen for Hotels, BNBs, Gyms and Spas. 
+</p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">
                   <a href="#contact" data-testid="hero-quote-btn">Request a Quote</a>
@@ -300,7 +374,7 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Local supplier providing reliable service to NSW businesses without offshore middlemen.
+                    Local supplier providing reliable service to Australian businesses without offshore middlemen.
                   </p>
                 </CardContent>
               </Card>
@@ -318,18 +392,74 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
               <Card className="bg-background border-none shadow-sm hover:shadow-md transition-shadow">
                 <CardHeader>
                   <MessageSquare className="w-10 h-10 text-secondary mb-4" />
-                  <CardTitle className="text-primary text-xl">Clear Specs & Responsive Service</CardTitle>
+                  <CardTitle className="text-primary text-xl">Trading Expertise & Clear Communication</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Exact product specifications and dependable communication you can trust for procurement.
+                    We explain buyer/supplier options, pricing and trade-offs in plain language so your team can make clean decisions.
                   </p>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
+{/* 4b. SERVICES TEASER */}
+<section id="services" className="py-20 bg-muted/40 border-y border-border/40">
+  <div className="container mx-auto px-4 max-w-5xl">
+    <div className="text-center mb-10 max-w-2xl mx-auto">
+      <h2 className="text-3xl font-bold text-primary mb-3">
+        Import &amp; Export Sourcing
+      </h2>
+      <p className="text-muted-foreground text-base md:text-lg">
+        Harbour Arch Trading operates as a lean trading house for Australian
+        businesses that need offshore sourcing or export reach without building
+        an in-house trade team.
+      </p>
+    </div>
 
+    <div className="grid md:grid-cols-2 gap-8">
+      {/* Card 1: Import Sourcing */}
+      <div className="bg-background border border-border/60 rounded-xl p-6 shadow-sm">
+        <h3 className="text-lg font-semibold text-primary mb-2">
+          Import Sourcing Agency
+        </h3>
+        <p className="text-muted-foreground text-sm md:text-base mb-4">
+          CPA-led import sourcing for Australian SMEs and hospitality operators.
+          We qualify factories in Asia, coordinate samples and give you clear
+          landed cost numbers before you commit to an order.
+        </p>
+        <Button
+          asChild
+          variant="outline"
+          size="sm"
+          className="border-primary text-primary hover:bg-primary/5"
+        >
+          <Link href="/services">Learn more</Link>
+        </Button>
+      </div>
+
+      {/* Card 2: Export Agency */}
+      <div className="bg-background border border-border/60 rounded-xl p-6 shadow-sm">
+        <h3 className="text-lg font-semibold text-primary mb-2">
+          Australian Export Agency
+        </h3>
+        <p className="text-muted-foreground text-sm md:text-base mb-4">
+          Export representation for Australian brands looking at Asian buyers.
+          We help match your products with the right distributors and channels
+          and manage the early stages of the export relationship.
+        </p>
+        <Button
+          asChild
+          variant="outline"
+          size="sm"
+          className="border-primary text-primary hover:bg-primary/5"
+        >
+          <Link href="/services">Learn more</Link>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
         {/* 4. PRODUCTS */}
         <section id="products" className="py-24 container mx-auto px-4">
           <div className="text-center mb-16 max-w-2xl mx-auto">
@@ -393,15 +523,15 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
         </section>
 
         <PacksSection />
-
         {/* 5. ABOUT */}
         <section id="about" className="py-24 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl font-bold mb-8 text-center">About Harbour Arch Trading</h2>
             <div className="text-lg text-primary-foreground/90 leading-relaxed mb-12 text-center md:text-left">
-              <p>
-                Harbour Arch Trading is a Sydney-based business supplying hospitality linen to Australian buyers. We focus on commercial-grade essentials with clear specifications, practical sourcing, and responsive communication for businesses that need dependable product supply.
-              </p>
+             <p>
+  Harbour Arch Trading is a Sydney-based trading business supplying hospitality linen to Australian buyers and supporting selected clients with import sourcing and export agency services.
+  We focus on commercial-grade essentials with clear specifications, CPA-level landed cost insight and practical sourcing support for businesses that need dependable product supply and clearer trade decisions.
+</p>
             </div>
             
             <div className="grid sm:grid-cols-3 gap-8">
@@ -410,21 +540,21 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                   <CheckCircle className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="font-semibold text-lg">Clear Specifications</h3>
-                <p className="text-primary-foreground/70 text-sm">No guessing. Exact measurements and GSM ratings.</p>
+                <p className="text-primary-foreground/70 text-sm"> No guessing. Exact measurements, GSM ratings and product specs for every linen line and sourcing engagement.</p>
               </div>
               <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
                 <div className="bg-primary-foreground/10 p-3 rounded-full">
                   <PackageCheck className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="font-semibold text-lg">Practical Sourcing</h3>
-                <p className="text-primary-foreground/70 text-sm">Reliable supply chains focused on utility and durability.</p>
+                <p className="text-primary-foreground/70 text-sm">Reliable supply chains for hospitality linen plus CPA-led support when you need offshore sourcing or export coordination.</p>
               </div>
               <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
                 <div className="bg-primary-foreground/10 p-3 rounded-full">
                   <MessageSquare className="w-6 h-6 text-secondary" />
                 </div>
                 <h3 className="font-semibold text-lg">Responsive Communication</h3>
-                <p className="text-primary-foreground/70 text-sm">Fast replies and proactive updates on your orders.</p>
+                <p className="text-primary-foreground/70 text-sm">Fast replies and proactive updates on orders, sourcing briefs and export discussions so you always know where things stand.</p>
               </div>
             </div>
           </div>
