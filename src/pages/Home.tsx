@@ -336,7 +336,7 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
 <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-primary leading-tight">
-  Hospitality Linen &amp; Trading Services for Australian Businesses
+  Trading Services &amp; Hospitality Linen for Australian Businesses
 </h1>
 <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
   Harbour Arch Trading provides CPA-led import sourcing and export agency services for Australian businesses
