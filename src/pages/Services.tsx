@@ -180,9 +180,10 @@ const Services: React.FC = () => {
               Trading &amp; Sourcing Services for Australian Businesses
             </h1>
             <p className="text-muted-foreground text-base md:text-lg max-w-3xl mb-8">
-              Harbour Arch Trading helps Australian businesses source, import and
-              export products with clear specifications, CPA-level cost visibility
-              and practical, responsive communication throughout each trade.
+Harbour Arch Trading helps Australian businesses source, import and export products
+  with clear specifications, CPA-level cost visibility and practical, responsive communication
+  throughout each trade. We specialise in hospitality linen and product categories where
+  margin control and dependable supply matter.
             </p>
 
             <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
@@ -278,8 +279,10 @@ const Services: React.FC = () => {
                     directly – we act as your commercial sourcing agent.
                   </p>
                   <p className="text-[11px] md:text-xs text-muted-foreground">
-                    Detailed fee structure is provided in a written proposal once we
-                    understand your category, volume and project scope.
+Many clients begin with a narrow, fixed-fee sourcing brief for a single product line,
+  then convert to our commission-based model once supplier fit and quality are proven.
+  Detailed fee structure is provided in a written proposal once we understand your category,
+  volume and project scope.
                   </p>
                 </div>
               </div>
@@ -367,8 +370,9 @@ const Services: React.FC = () => {
                     and supplier.
                   </p>
                   <p className="text-[11px] md:text-xs text-muted-foreground">
-                    Commission ranges and terms are set out in a written export
-                    agency agreement tailored to your category and target markets.
+  Export relationships typically begin with a narrow product focus and one core distributor,
+  then expand as orders and compliance pathways prove out. Commission ranges and terms are
+  set out in a written export agency agreement tailored to your category and target markets.
                   </p>
                 </div>
               </div>
