@@ -408,14 +408,13 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
 <section id="services" className="py-20 bg-muted/40 border-y border-border/40">
   <div className="container mx-auto px-4 max-w-5xl">
     <div className="text-center mb-10 max-w-2xl mx-auto">
-      <h2 className="text-3xl font-bold text-primary mb-3">
-        Import &amp; Export Sourcing
-      </h2>
-      <p className="text-muted-foreground text-base md:text-lg">
-        Harbour Arch Trading operates as a lean trading house for Australian
-        businesses that need offshore sourcing or export reach without building
-        an in-house trade team.
-      </p>
+<h2 className="text-3xl font-bold text-primary mb-3">
+  Import &amp; Export Sourcing Services
+</h2>
+<p className="text-muted-foreground text-base md:text-lg">
+  Harbour Arch Trading operates as a lean trading house for Australian businesses
+  that need offshore sourcing or export reach without building a large in-house trade team.
+</p>
     </div>
 
     <div className="grid md:grid-cols-2 gap-8">
