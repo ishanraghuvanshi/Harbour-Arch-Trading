@@ -340,7 +340,8 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
 </h1>
 <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
   Harbour Arch Trading provides CPA-led import sourcing and export agency services for Australian businesses
-  that want clearer, more reliable product trade.We also specialise in supplying commercial-grade hospitality linen for Hotels, BNBs, Gyms and Spas. 
+  that want clearer, more reliable product trade. We also specialise in supplying commercial-grade hospitality linen
+  for hotels, BNBs, gyms and spas.
 </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">
@@ -528,9 +529,11 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-3xl font-bold mb-8 text-center">About Harbour Arch Trading</h2>
             <div className="text-lg text-primary-foreground/90 leading-relaxed mb-12 text-center md:text-left">
-             <p>
-  Harbour Arch Trading is a Sydney-based trading business supplying hospitality linen to Australian buyers and supporting selected clients with import sourcing and export agency services.
-  We focus on commercial-grade essentials with clear specifications, CPA-level landed cost insight and practical sourcing support for businesses that need dependable product supply and clearer trade decisions.
+<p>
+  Harbour Arch Trading is a Sydney-based trading business supplying hospitality linen to Australian buyers and
+  supporting selected clients with import sourcing and export agency services. We focus on commercial-grade essentials
+  with clear specifications, CPA-level landed cost insight and practical sourcing support for businesses that need
+  dependable product supply and clearer trade decisions.
 </p>
             </div>
             
