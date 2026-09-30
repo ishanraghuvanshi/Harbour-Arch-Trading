@@ -580,6 +580,10 @@ export default function Home() {
               reply and arrange your diagnostic. We don't sell them or share them for marketing.
             </p>
             <p>
+              <span className="font-medium text-foreground">Bookings.</span> If you book a diagnostic, your name, email
+              and booking answers are handled by Google Calendar and shared with us to hold the call.
+            </p>
+            <p>
               <span className="font-medium text-foreground">Analytics.</span> The site uses Google Analytics, which sets
               cookies to count visits and show how people find the site: pages viewed, device and approximate location.
               Google processes this data and may store it outside Australia. You can block it in your browser settings
