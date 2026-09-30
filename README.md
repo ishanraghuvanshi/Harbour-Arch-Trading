@@ -63,10 +63,9 @@ Changing DNS can take the site or the inbox offline. No DNS change is made witho
 | Google Workspace | Email for @harbourarchtrading.com.au | Google Admin console | Owner only |
 | Formspree | Receives contact-form submissions and forwards them by email | `src/pages/Home.tsx` (form ID `xkoypzag`) Submissions go to ishan@harbourarchtrading.com.au. Plan [TBC] |
 | Google Analytics 4 | Visitor analytics | `index.html` (ID `G-T4TQN9G91W`) | [TBC] |
-| Microsoft Clarity | Session recordings and heatmaps | `index.html` (ID `wppbdvo6e0`) | [TBC] |
 | Google Fonts | Loads the Inter typeface | `index.html` | No account needed |
 
-The IDs above for Formspree, Google Analytics and Clarity are public by design. They show in every visitor's browser and are not secrets.
+The IDs above for Formspree and Google Analytics are public by design. They show in every visitor's browser and are not secrets.
 
 ## Security status (checked 30 September 2026)
 
@@ -80,7 +79,8 @@ The IDs above for Formspree, Google Analytics and Clarity are public by design. 
 
 - `node_modules/` (135 MB), `dist/` and `harbour-arch-trading.tar.gz` (16 MB) are committed to the repo. `.gitignore` is saved in UTF-16 encoding, so git does not read it and it has no effect.
 - Unlicensed Adobe Stock photos were removed from the site on 30 September 2026. They remain in git history and inside `harbour-arch-trading.tar.gz`.
-- Microsoft Clarity records visitor sessions. The site has no privacy policy. [TBC: decide whether to keep Clarity]
+- Microsoft Clarity was removed on 30 September 2026. Delete the Clarity project at clarity.microsoft.com to stop it holding past recordings.
+- The site has no privacy notice, but Google Analytics' terms require one. [Proposed in a separate PR]
 
 ## Rules for changes
 
