@@ -62,7 +62,9 @@ Changing DNS can take the site or the inbox offline. No DNS change is made witho
 | Namecheap | Domain and DNS | Registrar dashboard | Owner only |
 | Google Workspace | Email for @harbourarchtrading.com.au | Google Admin console | Owner only |
 | Formspree | Receives contact-form submissions and forwards them by email | `src/pages/Home.tsx` (form ID `xkoypzag`) Submissions go to ishan@harbourarchtrading.com.au. Plan [TBC] |
-| Google Analytics 4 | Visitor analytics | `index.html` (ID `G-T4TQN9G91W`) | [TBC] |
+| Google Analytics 4 | Visitor analytics. Form leads tracked as `generate_lead` | `index.html` (ID `G-T4TQN9G91W`) | Owner (access confirmed 30 Sep 2026) |
+| Google Search Console | Search queries, indexing status | Property `https://harbourarchtrading.com.au/`, sitemap submitted 30 Sep 2026 | Owner |
+| Google Calendar appointment schedule | Diagnostic bookings (Workspace Business Starter, no extra cost) | Link in `src/pages/Home.tsx` (`BOOKING_URL`) | Owner |
 | Google Fonts | Loads the Inter typeface | `index.html` | No account needed |
 
 The IDs above for Formspree and Google Analytics are public by design. They show in every visitor's browser and are not secrets.
