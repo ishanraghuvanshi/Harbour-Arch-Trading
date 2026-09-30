@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import logoPath from "../assets/logo_transparent.png";
+// Bridge mark only. The wordmark is set as text beside it so it stays legible at header size.
+import logoPath from "../assets/logo_icon.png";
 import { Menu, X, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -152,13 +153,13 @@ export default function Home() {
           <a href="#top" className="flex items-center gap-3">
             <img
               src={logoPath}
-              alt="Harbour Arch Trading logo"
+              alt=""
               className="h-10 w-auto object-contain"
               data-testid="img-logo"
             />
-            <div className="flex flex-col leading-tight">
-              <span className="font-bold text-base tracking-wide text-primary">HARBOUR ARCH</span>
-              <span className="font-medium text-xs tracking-widest text-muted-foreground uppercase">Trading</span>
+            <div className="flex flex-col leading-none">
+              <span className="font-bold text-lg tracking-wide text-primary">HARBOUR ARCH</span>
+              <span className="font-semibold text-sm tracking-[0.3em] text-[#8E8F8A] mt-1">TRADING</span>
             </div>
           </a>
 
@@ -571,13 +572,13 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <img
                 src={logoPath}
-                alt="Harbour Arch Trading logo"
+                alt=""
                 className="h-10 w-auto object-contain brightness-0 invert"
                 data-testid="img-footer-logo"
               />
-              <div className="flex flex-col leading-tight">
-                <span className="font-bold text-base tracking-wide text-primary-foreground">HARBOUR ARCH</span>
-                <span className="font-medium text-xs tracking-widest text-primary-foreground/60 uppercase">Trading</span>
+              <div className="flex flex-col leading-none">
+                <span className="font-bold text-lg tracking-wide text-primary-foreground">HARBOUR ARCH</span>
+                <span className="font-semibold text-sm tracking-[0.3em] text-primary-foreground/60 mt-1">TRADING</span>
               </div>
             </div>
 
