@@ -31,9 +31,9 @@ A clean `npm ci` followed by `npm run build` was tested on 30 September 2026 and
 
 - Host: **GitHub Pages**, deployed by GitHub Actions (`.github/workflows/static.yml`).
 - Trigger: every push to `main` builds the site and publishes it live, with no further approval step. Merging a PR is publishing.
-- The workflow installs with `pnpm`, but the repo only has an npm lockfile (`package-lock.json`). Builds have succeeded so far, but dependency versions in production are not pinned to the lockfile. [Fix proposed separately]
+- The workflow installs with `npm ci`, so production uses exactly the versions in `package-lock.json`. It can also be re-run by hand from the Actions tab ("Run workflow").
 - Custom domain: `harbourarchtrading.com.au` (apex), set in the repo's Settings → Pages. "Enforce HTTPS" is on (checked 30 September 2026). The TLS certificate comes from Let's Encrypt and GitHub renews it automatically.
-- `netlify.toml` and `public/_redirects` are leftovers from an earlier Netlify setup and are not used. `public/CNAME` contains a misspelt domain (`harbourachtrading.com.au`). GitHub Actions deployments ignore that file, so it has no effect on the live site.
+- The custom domain is set only in Settings → Pages. Leftover Netlify files and a misspelt `public/CNAME` were removed on 30 September 2026.
 
 ## Domain, DNS and email
 
