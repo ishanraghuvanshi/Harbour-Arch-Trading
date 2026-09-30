@@ -42,9 +42,9 @@ DNS (Domain Name System) records were checked through Google Public DNS on 30 Se
 | Item | Finding | Status |
 |---|---|---|
 | Nameservers | `dns1/dns2.registrar-servers.com` (Namecheap's DNS service) | Fact |
-| Registrar | Probably Namecheap, based on the nameservers | [TBC: confirm from the renewal invoice] |
-| Who holds the registrar login | | [TBC] |
-| Domain renewal date and auto-renew | | [TBC] |
+| Registrar | Namecheap (confirmed by owner) | Fact |
+| Who holds the registrar login | Owner only | Fact |
+| Domain renewal date and auto-renew | Auto-renew is **off**. Renewal date [TBC] | Risk: if the domain lapses, the website and all email stop together |
 | Apex `harbourarchtrading.com.au` | A records point to GitHub Pages (185.199.108-111.153) | Fact |
 | `www` | CNAME record points to `ishanraghuvanshi.github.io` | Fact |
 | Email | MX record points to `smtp.google.com`, so Google Workspace | Fact |
@@ -58,14 +58,14 @@ Changing DNS can take the site or the inbox offline. No DNS change is made witho
 
 | Service | What it does | Where it's set | Account holder |
 |---|---|---|---|
-| GitHub (repo, Actions and Pages) | Code, build and hosting | This repo | ishanraghuvanshi |
-| Namecheap [TBC] | Domain and DNS | Registrar dashboard | [TBC] |
-| Google Workspace | Email for @harbourarchtrading.com.au | Google Admin console | [TBC] |
-| Formspree | Receives contact-form submissions and forwards them by email | `src/pages/Home.tsx` (form ID `xkoypzag`) | [TBC: which inbox receives submissions, and which plan] |
+| GitHub (repo, Actions and Pages) | Code, build and hosting | This repo | ishanraghuvanshi (owner only) |
+| Namecheap | Domain and DNS | Registrar dashboard | Owner only |
+| Google Workspace | Email for @harbourarchtrading.com.au | Google Admin console | Owner only |
+| Formspree | Receives contact-form submissions and forwards them by email | `src/pages/Home.tsx` (form ID `xkoypzag`) Submissions go to ishan@harbourarchtrading.com.au. Plan [TBC] |
 | Google Analytics 4 | Visitor analytics | `index.html` (ID `G-T4TQN9G91W`) | [TBC] |
 | Microsoft Clarity | Session recordings and heatmaps | `index.html` (ID `wppbdvo6e0`) | [TBC] |
 | Google Fonts | Loads the Inter typeface | `index.html` | No account needed |
-| Adobe Stock | Three photos in `src/assets/` | Image files | [TBC: confirm a licence was bought for each] |
+| Adobe Stock | Three photos in `src/assets/`, one shown on the live home page | Image files | **Not licensed.** Must be removed |
 
 The IDs above for Formspree, Google Analytics and Clarity are public by design. They show in every visitor's browser and are not secrets.
 
@@ -74,6 +74,7 @@ The IDs above for Formspree, Google Analytics and Clarity are public by design. 
 - The site content describes hospitality linen supply. The current offer is the India market-entry service. [Covered in the accuracy check]
 - `node_modules/` (135 MB), `dist/` and `harbour-arch-trading.tar.gz` (16 MB) are committed to the repo. `.gitignore` is saved in UTF-16 encoding, so git does not read it and it has no effect.
 - The largest photo is 4.7 MB, which makes the site slow to load on a phone.
+- Three unlicensed Adobe Stock photos are in the repo. `AdobeStock_365294624` is shown on the live home page.
 - Microsoft Clarity records visitor sessions. The site has no privacy policy. [TBC: decide whether to keep Clarity]
 
 ## Rules for changes
