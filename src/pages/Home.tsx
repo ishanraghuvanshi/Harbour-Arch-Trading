@@ -1,27 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "wouter";
 import logoPath from "../assets/logo_transparent.png";
-import imgHero from "../assets/hero-trading-harbour.jpg";
-import imgBathMat from "../assets/bath-mat.png";
-import imgBedSheets from "../assets/bed-sheet-1.png";
-import imgHandTowel from "../assets/hand-towel.png";
-import imgPillowcase from "../assets/pillow-case.jpg";
-import {
-  Anchor,
-  Menu,
-  X,
-  MapPin,
-  MapPinHouse,
-  ShieldCheck,
-  CheckCircle,
-  MessageSquare,
-  PackageCheck,
-  BedDouble,
-  Bath,
-  Info,
-} from "lucide-react";
+import { Menu, X, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useForm } from "react-hook-form";
@@ -37,18 +17,69 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 
-
-import PacksSection from "../components/PacksSection";
+const EMAIL = "ishan@harbourarchtrading.com.au";
+const PHONE = "0432 263 400";
+const LINKEDIN = "https://www.linkedin.com/in/ishan-raghuvanshi";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
-  business: z.string().min(2, "Business name is required"),
+  business: z.string().min(2, "Brand or business name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
+
+// Content below matches slides 5 and 6 of the India Market Entry decks
+// (Food & Beverage and Supplements & Nutraceuticals versions).
+const stages = [
+  {
+    stage: "Stage 1",
+    name: "Readiness assessment",
+    what: "Your products assessed against Indian law, item by item.",
+    fee: "A$3,500 + GST (food and beverage) · A$5,500 + GST (supplements)",
+    decision: "Proceed or stop, on evidence",
+  },
+  {
+    stage: "Stage 2",
+    name: "Compliance execution",
+    what: "Registrations, label artwork, approvals for anything flagged in Stage 1.",
+    fee: "Scoped after Stage 1",
+    decision: "Priced against real findings",
+  },
+  {
+    stage: "Stage 3",
+    name: "Market entry",
+    what: "Importer of record, first consignment, pricing and channel terms.",
+    fee: "Scoped at Stage 2 close",
+    decision: "Your call on structure",
+  },
+  {
+    stage: "Stage 4",
+    name: "Distribution",
+    what: "Harbour Arch as your India distributor, offered and never assumed.",
+    fee: "Commercial terms",
+    decision: "Optional. You choose.",
+  },
+];
+
+const stageOnePricing = [
+  {
+    sector: "Food and beverage",
+    title: "India Market Readiness Assessment",
+    fee: "A$3,500 + GST",
+    skus: "Five SKUs. Additional SKUs A$400 + GST each.",
+    time: "4 weeks",
+  },
+  {
+    sector: "Supplements and nutraceuticals",
+    title: "Formulation & Compliance Mapping",
+    fee: "A$5,500 + GST",
+    skus: "Five SKUs. Additional SKUs A$650 + GST each.",
+    time: "6 weeks",
+  },
+];
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,125 +97,51 @@ export default function Home() {
   });
 
   const onSubmit = async (data: ContactFormValues) => {
-  try {
-const formData = new FormData();
-formData.append("name", data.name);
-formData.append("business", data.business);
-formData.append("email", data.email);
-formData.append("phone", data.phone || "");
-formData.append("message", data.message);
+    try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("business", data.business);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone || "");
+      formData.append("message", data.message);
 
-const response = await fetch("https://formspree.io/f/xkoypzag", {
-  method: "POST",
-  body: formData,
-  headers: {
-    Accept: "application/json",
-  },
-});
-    
-    if (response.ok) {
-      toast({
-        title: "Message Sent",
-        description: "Thank you for getting in touch. We will respond shortly.",
+      const response = await fetch("https://formspree.io/f/xkoypzag", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
       });
-      form.reset();
-    } else {
+
+      if (response.ok) {
+        toast({
+          title: "Message sent",
+          description: "Thank you. Ishan will reply within one business day.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error",
+          description: `Something went wrong. Please try again or email ${EMAIL}.`,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again.",
+        description: `Something went wrong. Please try again or email ${EMAIL}.`,
         variant: "destructive",
       });
     }
-  } catch (error) {
-    toast({
-      title: "Error",
-      description: "Something went wrong. Please try again.",
-      variant: "destructive",
-    });
-  }
-};
+  };
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
-  const productData = [
-    {
-      id: "hand-towel",
-      name: "Hand Towels",
-      image: imgHandTowel,
-      imagePosition: "object-center",
-      imageAlt: "Harbour Arch Trading hand towels — white hand towel on ring",
-      desc: "Durable and highly absorbent cotton hand towels ideal for hotel and serviced apartment bathrooms.",
-      specs: [
-        { label: "Dimensions", value: "40×70 cm" },
-        { label: "Weight", value: "450–500 GSM" },
-        { label: "Material", value: "100% combed cotton" },
-        { label: "Color", value: "Optical white" },
-        { label: "Care", value: "80°C industrial wash" },
-      ],
-    },
-    {
-      id: "bath-mat",
-      name: "Bath Mats",
-      image: imgBathMat,
-      imagePosition: "object-center",
-      imageAlt: "Harbour Arch Trading bath mats — white bath mat in bathroom setting",
-      desc: "Heavy-duty woven bath mats offering superior durability and slip resistance.",
-      specs: [
-        { label: "Dimensions", value: "50×80 cm" },
-        { label: "Weight", value: "900–1100 GSM" },
-        { label: "Material", value: "100% cotton with heavy-duty backing" },
-        { label: "Color", value: "Optical white" },
-        { label: "Care", value: "60°C wash" },
-        { label: "Note", value: "Size subject to supplier confirmation" },
-      ],
-    },
-    {
-      id: "fitted-sheet",
-      name: "Fitted Sheets",
-      image: imgBedSheets,
-      imagePosition: "object-center",
-      imageAlt: "Harbour Arch Trading fitted sheets — white hotel bed with crisp fitted sheet",
-      desc: "Crisp, hotel-quality fitted sheets with deep pockets for commercial mattresses.",
-      specs: [
-        { label: "Queen Size", value: "153×203 cm, 40 cm pocket" },
-        { label: "King Size", value: "183×203 cm, 40 cm pocket" },
-        { label: "Thread Count", value: "250–300 TC" },
-        { label: "Material", value: "100% cotton (60/40 poly-cotton option)" },
-        { label: "Color", value: "Optical white" },
-        { label: "Care", value: "80°C commercial" },
-      ],
-    },
-    {
-      id: "flat-sheet",
-      name: "Flat Sheets",
-      image: imgBedSheets,
-      imagePosition: "object-bottom",
-      imageAlt: "Harbour Arch Trading flat sheets — white hotel flat sheet on bed",
-      desc: "Generously sized flat sheets designed for perfect commercial tucking and long-lasting whiteness.",
-      specs: [
-        { label: "Queen Size", value: "250×290 cm" },
-        { label: "King Size", value: "280×290 cm" },
-        { label: "Thread Count", value: "250–300 TC" },
-        { label: "Material", value: "100% cotton (60/40 poly-cotton option)" },
-        { label: "Color", value: "Optical white" },
-        { label: "Care", value: "80°C commercial" },
-      ],
-    },
-    {
-      id: "pillowcases",
-      name: "Pillowcases",
-      image: imgPillowcase,
-      imagePosition: "object-center",
-      imageAlt: "Harbour Arch Trading pillowcases — white pillowcases on hotel bed with lamp",
-      desc: "Standard commercial pillowcase pairs matching our sheet specifications.",
-      specs: [
-        { label: "Dimensions", value: "50×75 cm standard queen pair" },
-        { label: "Thread Count", value: "250–300 TC" },
-        { label: "Material", value: "Matches sheet spec" },
-        { label: "Color", value: "Optical white" },
-        { label: "Care", value: "80°C commercial" },
-      ],
-    },
+  const navLinks = [
+    { href: "#diagnostic", label: "Free diagnostic" },
+    { href: "#stages", label: "How it works" },
+    { href: "#pricing", label: "Pricing" },
+    { href: "#about", label: "About" },
   ];
 
   return (
@@ -192,7 +149,7 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
       {/* 1. HEADER */}
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <a href="#top" className="flex items-center gap-3">
             <img
               src={logoPath}
               alt="Harbour Arch Trading logo"
@@ -203,50 +160,20 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
               <span className="font-bold text-base tracking-wide text-primary">HARBOUR ARCH</span>
               <span className="font-medium text-xs tracking-widest text-muted-foreground uppercase">Trading</span>
             </div>
-          </div>
+          </a>
 
-{/* Desktop Nav */}
-<nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-  <Link
-    href="/"
-    className="transition-colors hover:text-primary text-muted-foreground"
-  >
-    Home
-  </Link>
-  <a
-    href="/#products"
-    className="transition-colors hover:text-primary text-muted-foreground"
-  >
-    Products
-  </a>
-  <a
-    href="/#packs"
-    className="transition-colors hover:text-primary text-muted-foreground"
-  >
-    Packs
-  </a>
-  <Link
-    href="/services"
-    className="transition-colors hover:text-primary text-muted-foreground"
-  >
-    Services
-  </Link>
-  <a
-    href="/#about"
-    className="transition-colors hover:text-primary text-muted-foreground"
-  >
-    About
-  </a>
-  <a
-    href="/#contact"
-    className="transition-colors hover:text-primary text-muted-foreground"
-  >
-    Contact
-  </a>
-  <Button asChild className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-    <a href="/#contact">Request a Quote</a>
-  </Button>
-</nav>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className="transition-colors hover:text-primary text-muted-foreground">
+                {l.label}
+              </a>
+            ))}
+            <Button asChild className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+              <a href="#contact">Book a free diagnostic</a>
+            </Button>
+          </nav>
+
           {/* Mobile Menu Toggle */}
           <button
             className="md:hidden p-2 text-foreground"
@@ -257,324 +184,267 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
           </button>
         </div>
 
-{/* Mobile Nav Dropdown */}
-{mobileMenuOpen && (
-  <div className="md:hidden border-b bg-background px-4 py-4 space-y-4 shadow-lg absolute w-full left-0 top-16">
-    <Link
-      href="/"
-      onClick={closeMobileMenu}
-      className="block text-sm font-medium hover:text-primary"
-    >
-      Home
-    </Link>
-    <a
-      onClick={closeMobileMenu}
-      href="/#products"
-      className="block text-sm font-medium hover:text-primary"
-    >
-      Products
-    </a>
-    <a
-      onClick={closeMobileMenu}
-      href="/#packs"
-      className="block text-sm font-medium hover:text-primary"
-    >
-      Packs
-    </a>
-    <Link
-      href="/services"
-      onClick={closeMobileMenu}
-      className="block text-sm font-medium hover:text-primary"
-    >
-      Services
-    </Link>
-    <a
-      onClick={closeMobileMenu}
-      href="/#about"
-      className="block text-sm font-medium hover:text-primary"
-    >
-      About
-    </a>
-    <a
-      onClick={closeMobileMenu}
-      href="/#contact"
-      className="block text-sm font-medium hover:text-primary"
-    >
-      Contact
-    </a>
-    <Button
-      asChild
-      className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
-      onClick={closeMobileMenu}
-    >
-      <a href="/#contact">Request a Quote</a>
-    </Button>
-  </div>
-)}
+        {/* Mobile Nav Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-b bg-background px-4 py-4 space-y-4 shadow-lg absolute w-full left-0 top-16">
+            {navLinks.map((l) => (
+              <a key={l.href} onClick={closeMobileMenu} href={l.href} className="block text-sm font-medium hover:text-primary">
+                {l.label}
+              </a>
+            ))}
+            <Button
+              asChild
+              className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
+              onClick={closeMobileMenu}
+            >
+              <a href="#contact">Book a free diagnostic</a>
+            </Button>
+          </div>
+        )}
       </header>
 
-      <main className="flex-1">
+      <main id="top" className="flex-1">
         {/* 2. HERO */}
-        <section className="py-20 md:py-32 container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-<h1 className="text-4xl md:text-6xl font-bold tracking-tight text-primary leading-tight">
-  Trading Services &amp; Hospitality Linen for Australian Businesses
-</h1>
-<p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-  Harbour Arch Trading provides CPA-led import sourcing and export agency services for Australian businesses
-  that want clearer, more reliable product trade. We also specialise in supplying commercial-grade hospitality linen
-  for hotels, BNBs, gyms and spas.
-</p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+        <section className="py-20 md:py-28 container mx-auto px-4">
+          <div className="grid md:grid-cols-5 gap-12 items-center">
+            <div className="md:col-span-3 space-y-6">
+              <p className="text-sm font-semibold uppercase tracking-widest text-secondary">
+                India market entry for Australian brands
+              </p>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-primary leading-tight">
+                Selling your food, beverage or supplement brand into India
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Regulatory, compliance and pricing readiness, assessed against Indian law before you ship a single
+                pallet. India is open to Australian brands. We make sure yours arrives ready to sell.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">
-                  <a href="#contact" data-testid="hero-quote-btn">Request a Quote</a>
+                  <a href="#contact" data-testid="hero-book-btn">Book a free diagnostic</a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5">
-                  <a href="#products" data-testid="hero-products-btn">View Products</a>
+                  <a href="#stages" data-testid="hero-how-btn">See how it works</a>
                 </Button>
               </div>
             </div>
-            <div className="relative aspect-square md:aspect-[4/3] rounded-xl overflow-hidden border border-border/50 shadow-sm">
-              <img
-                src={imgHero}
-                alt="White hotel room bed with fresh commercial linen — Harbour Arch Trading"
-                className="w-full h-full object-cover"
-                data-testid="img-hero"
-              />
+
+            <div id="diagnostic" className="md:col-span-2 bg-muted/50 border border-border rounded-xl p-6 md:p-8 scroll-mt-24">
+              <h2 className="text-2xl font-bold text-primary mb-3">Free 45-minute diagnostic</h2>
+              <p className="text-muted-foreground mb-5">
+                Start with a label photo. Send it with two or three headline ingredients for up to two of your
+                products. No cost, and no obligation to go further.
+              </p>
+              <ul className="space-y-3 text-sm">
+                {[
+                  "45-minute call on two of your products",
+                  "Three written findings, each citing the Indian regulation",
+                  "A follow-up page within 24 hours",
+                ].map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <CheckCircle className="w-5 h-5 text-secondary shrink-0" />
+                    <span className="text-foreground">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* 3. TRUST SIGNALS */}
-        <section id="about-trust" className="bg-muted/50 py-20 border-y border-border">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center text-primary mb-12">Why Harbour Arch Trading</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="bg-background border-none shadow-sm hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <MapPin className="w-10 h-10 text-secondary mb-4" />
-                  <CardTitle className="text-primary text-xl">Sydney-Based Business</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Local supplier providing reliable service to Australian businesses without offshore middlemen.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-background border-none shadow-sm hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <ShieldCheck className="w-10 h-10 text-secondary mb-4" />
-                  <CardTitle className="text-primary text-xl">Commercial-Grade Linen</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Products engineered and tested for heavy industrial wash cycles and daily commercial use.
-                  </p>
-                </CardContent>
-              </Card>
-              <Card className="bg-background border-none shadow-sm hover:shadow-md transition-shadow">
-                <CardHeader>
-                  <MessageSquare className="w-10 h-10 text-secondary mb-4" />
-                  <CardTitle className="text-primary text-xl">Trading Expertise & Clear Communication</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    We explain buyer/supplier options, pricing and trade-offs in plain language so your team can make clean decisions.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-{/* 4b. SERVICES TEASER */}
-<section id="services" className="py-20 bg-muted/40 border-y border-border/40">
-  <div className="container mx-auto px-4 max-w-5xl">
-    <div className="text-center mb-10 max-w-2xl mx-auto">
-<h2 className="text-3xl font-bold text-primary mb-3">
-  Import &amp; Export Sourcing Services
-</h2>
-<p className="text-muted-foreground text-base md:text-lg">
-  Harbour Arch Trading operates as a lean trading house for Australian businesses
-  that need offshore sourcing or export reach without building a large in-house trade team.
-</p>
-    </div>
-
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Card 1: Import Sourcing */}
-      <div className="bg-background border border-border/60 rounded-xl p-6 shadow-sm">
-        <h3 className="text-lg font-semibold text-primary mb-2">
-          Import Sourcing Agency
-        </h3>
-        <p className="text-muted-foreground text-sm md:text-base mb-4">
-          CPA-led import sourcing for Australian SMEs and hospitality operators.
-          We qualify factories in Asia, coordinate samples and give you clear
-          landed cost numbers before you commit to an order.
-        </p>
-        <Button
-          asChild
-          variant="outline"
-          size="sm"
-          className="border-primary text-primary hover:bg-primary/5"
-        >
-          <Link href="/services">Learn more</Link>
-        </Button>
-      </div>
-
-      {/* Card 2: Export Agency */}
-      <div className="bg-background border border-border/60 rounded-xl p-6 shadow-sm">
-        <h3 className="text-lg font-semibold text-primary mb-2">
-          Australian Export Agency
-        </h3>
-        <p className="text-muted-foreground text-sm md:text-base mb-4">
-          Export representation for Australian brands looking at Asian buyers.
-          We help match your products with the right distributors and channels
-          and manage the early stages of the export relationship.
-        </p>
-        <Button
-          asChild
-          variant="outline"
-          size="sm"
-          className="border-primary text-primary hover:bg-primary/5"
-        >
-          <Link href="/services">Learn more</Link>
-        </Button>
-      </div>
-    </div>
-  </div>
-</section>
-        {/* 4. PRODUCTS */}
-        <section id="products" className="py-24 container mx-auto px-4">
-          <div className="text-center mb-16 max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-primary mb-4">Our Hospitality Linen Range</h2>
-            <p className="text-muted-foreground text-lg">
-              Engineered for the rigorous demands of commercial hospitality while maintaining comfort and quality for guests.
+        {/* 3. WHY FIRST */}
+        <section className="bg-muted/50 py-16 border-y border-border">
+          <div className="container mx-auto px-4 max-w-3xl text-center space-y-4">
+            <h2 className="text-3xl font-bold text-primary">Know your route into India before you commit to it</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              A freight forwarder moves your goods and clears the shipment. This is the earlier question: whether the
+              product itself is permitted, correctly labelled and correctly classified before anything is booked.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {productData.map((product) => {
-              const [specsOpen, setSpecsOpen] = useState(false);
-              
-              return (
-                <Card key={product.id} className="flex flex-col border-border/60 shadow-sm overflow-hidden">
-                  <CardHeader className="p-0 border-b border-border/40">
-                    <div className="w-full h-48 overflow-hidden">
-                      <img
-                        src={product.image}
-                        alt={product.imageAlt}
-                        loading="lazy"
-                        className={`w-full h-full object-cover ${product.imagePosition}`}
-                        data-testid={`img-product-${product.id}`}
-                      />
+        </section>
+
+        {/* 4. FOUR GATES */}
+        <section id="stages" className="py-24 container mx-auto px-4 max-w-6xl scroll-mt-16">
+          <div className="max-w-3xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Four gates. You decide at each one.</h2>
+            <p className="text-muted-foreground text-lg">
+              You hold the decision at every gate. Each stage ends with one, and stopping is a normal outcome rather
+              than a failed engagement.
+            </p>
+          </div>
+
+          {/* Phones: one card per stage */}
+          <div className="md:hidden space-y-4">
+            {stages.map((s) => (
+              <div key={s.stage} className="rounded-xl border border-border p-5 space-y-3 text-sm">
+                <div>
+                  <div className="font-semibold text-primary">{s.stage}</div>
+                  <div className="text-muted-foreground">{s.name}</div>
+                </div>
+                <p className="text-foreground">{s.what}</p>
+                <div>
+                  <span className="font-medium text-foreground">Fee: </span>
+                  <span className="text-muted-foreground">{s.fee}</span>
+                </div>
+                <div>
+                  <span className="font-medium text-foreground">Your decision: </span>
+                  <span className="text-muted-foreground">{s.decision}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tablets and desktops: table */}
+          <div className="hidden md:block overflow-x-auto rounded-xl border border-border">
+            <table className="w-full text-sm md:text-base">
+              <thead className="bg-muted/60 text-primary">
+                <tr>
+                  <th className="text-left font-semibold p-4">Stage</th>
+                  <th className="text-left font-semibold p-4">What happens</th>
+                  <th className="text-left font-semibold p-4">Fee</th>
+                  <th className="text-left font-semibold p-4">Your decision</th>
+                </tr>
+              </thead>
+              <tbody>
+                {stages.map((s) => (
+                  <tr key={s.stage} className="border-t border-border align-top">
+                    <td className="p-4 min-w-[150px]">
+                      <div className="font-semibold text-primary">{s.stage}</div>
+                      <div className="text-muted-foreground">{s.name}</div>
+                    </td>
+                    <td className="p-4 min-w-[220px] text-foreground">{s.what}</td>
+                    <td className="p-4 min-w-[180px] text-foreground">{s.fee}</td>
+                    <td className="p-4 min-w-[160px] text-muted-foreground">{s.decision}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-sm text-muted-foreground mt-6 max-w-3xl">
+            Delivered from Sydney, with regulatory and commercial contacts in Delhi and Bangalore. No incumbent
+            distributor relationships, so nothing competes with your brand for attention.
+          </p>
+        </section>
+
+        {/* 5. STAGE 1 PRICING */}
+        <section id="pricing" className="py-24 bg-muted/40 border-y border-border/40 scroll-mt-16">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="max-w-3xl mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Stage 1: fixed scope, fixed fee</h2>
+              <p className="text-muted-foreground text-lg">
+                A written report rating every ingredient, additive, claim and label element against the governing
+                Indian instrument.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-4 mb-12">
+              <div className="bg-background rounded-xl border border-border p-5">
+                <div className="font-semibold text-secondary mb-1">Green</div>
+                <p className="text-sm text-muted-foreground">Compliant as supplied. Nothing to do.</p>
+              </div>
+              <div className="bg-background rounded-xl border border-border p-5">
+                <div className="font-semibold text-amber-600 mb-1">Amber</div>
+                <p className="text-sm text-muted-foreground">
+                  Label change required. Sticker or reprint, with the cost of each.
+                </p>
+              </div>
+              <div className="bg-background rounded-xl border border-border p-5">
+                <div className="font-semibold text-red-700 mb-1">Red</div>
+                <p className="text-sm text-muted-foreground">
+                  Not compliant. You get the fix (compliant dose or approval route), not just the breach.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {stageOnePricing.map((p) => (
+                <div key={p.sector} className="bg-background rounded-xl border border-border shadow-sm p-6 md:p-8">
+                  <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-2">{p.sector}</p>
+                  <h3 className="text-xl font-semibold text-primary mb-4">{p.title}</h3>
+                  <div className="text-3xl font-bold text-primary mb-6">{p.fee}</div>
+                  <dl className="space-y-3 text-sm">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-border/60 pb-3">
+                      <dt className="font-medium text-foreground">Products</dt>
+                      <dd className="text-muted-foreground sm:text-right">{p.skus}</dd>
                     </div>
-                    <div className="px-6 pt-5 pb-4">
-                    <CardTitle className="text-xl text-primary">{product.name}</CardTitle>
-                    <CardDescription className="text-base mt-2">
-                      {product.desc}
-                    </CardDescription>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-border/60 pb-3">
+                      <dt className="font-medium text-foreground">Time</dt>
+                      <dd className="text-muted-foreground sm:text-right">
+                        {p.time} from receipt of a complete product dossier
+                      </dd>
                     </div>
-                  </CardHeader>
-                  <CardContent className="pt-6 flex-1 flex flex-col">
-                    <Button 
-                      variant="outline" 
-                      className="w-full justify-between group text-primary border-border"
-                      onClick={() => setSpecsOpen(!specsOpen)}
-                      data-testid={`toggle-specs-${product.id}`}
-                    >
-                      View Specs
-                      <Info className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                    </Button>
-                    
-                    <div 
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${specsOpen ? 'max-h-[500px] opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'}`}
-                    >
-                      <div className="space-y-3 bg-muted/40 rounded-md p-4 text-sm">
-                        {product.specs.map((spec, i) => (
-                          <div key={i} className="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-border/40 last:border-0 pb-2 last:pb-0">
-                            <span className="font-medium text-foreground">{spec.label}</span>
-                            <span className="text-muted-foreground sm:text-right">{spec.value}</span>
-                          </div>
-                        ))}
-                      </div>
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
+                      <dt className="font-medium text-foreground">Payment</dt>
+                      <dd className="text-muted-foreground sm:text-right">Half on signing, half on delivery</dd>
                     </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                  </dl>
+                </div>
+              ))}
+            </div>
+
+            <ul className="mt-10 space-y-3 text-muted-foreground max-w-3xl">
+              <li>
+                <span className="font-medium text-foreground">Also included:</span> landed cost modelled to shelf price,
+                tariff classification with both duty scenarios, label gap matrix and claims disposition.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">You receive:</span> a written report, plus a meeting in
+                Sydney or a call elsewhere.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">What we need:</span> formulation, artwork, shelf life and
+                ex-works pricing. A mutual NDA is signed before anything is sent.
+              </li>
+              <li>
+                <span className="font-medium text-foreground">Stage 2 credit:</span> sign Stage 2 within 30 days of
+                receiving the report and 50% of your Stage 1 fee is credited against it.
+              </li>
+            </ul>
           </div>
         </section>
 
-        <PacksSection />
-        {/* 5. ABOUT */}
-        <section id="about" className="py-24 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl font-bold mb-8 text-center">About Harbour Arch Trading</h2>
-            <div className="text-lg text-primary-foreground/90 leading-relaxed mb-12 text-center md:text-left">
-<p>
-  Harbour Arch Trading is a Sydney-based trading business supplying hospitality linen to Australian buyers and
-  supporting selected clients with import sourcing and export agency services. We focus on commercial-grade essentials
-  with clear specifications, CPA-level landed cost insight and practical sourcing support for businesses that need
-  dependable product supply and clearer trade decisions.
-</p>
-            </div>
-            
-            <div className="grid sm:grid-cols-3 gap-8">
-              <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
-                <div className="bg-primary-foreground/10 p-3 rounded-full">
-                  <CheckCircle className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="font-semibold text-lg">Clear Specifications</h3>
-                <p className="text-primary-foreground/70 text-sm"> No guessing. Exact measurements, GSM ratings and product specs for every linen line and sourcing engagement.</p>
-              </div>
-              <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
-                <div className="bg-primary-foreground/10 p-3 rounded-full">
-                  <PackageCheck className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="font-semibold text-lg">Practical Sourcing</h3>
-                <p className="text-primary-foreground/70 text-sm">Reliable supply chains for hospitality linen plus CPA-led support when you need offshore sourcing or export coordination.</p>
-              </div>
-              <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
-                <div className="bg-primary-foreground/10 p-3 rounded-full">
-                  <MessageSquare className="w-6 h-6 text-secondary" />
-                </div>
-                <h3 className="font-semibold text-lg">Responsive Communication</h3>
-                <p className="text-primary-foreground/70 text-sm">Fast replies and proactive updates on orders, sourcing briefs and export discussions so you always know where things stand.</p>
-              </div>
-            </div>
+        {/* 6. ABOUT */}
+        <section id="about" className="py-24 bg-primary text-primary-foreground scroll-mt-16">
+          <div className="container mx-auto px-4 max-w-3xl space-y-6 text-lg leading-relaxed">
+            <h2 className="text-3xl font-bold">About</h2>
+            <p className="text-primary-foreground/90">
+              Harbour Arch Trading Pty Ltd is a Sydney company run by Ishan Raghuvanshi CPA. Ishan was previously at
+              EY and PwC, and worked in risk, audit and commercial operations at De Lage Landen, a Rabobank
+              subsidiary.
+            </p>
+            <p className="text-primary-foreground/90">You deal with Ishan directly, from the diagnostic onward.</p>
+            <p className="text-base text-primary-foreground/70">
+              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="underline hover:text-secondary">
+                LinkedIn
+              </a>
+              <span className="mx-3 text-primary-foreground/30">|</span>
+              ABN 55 697 775 447
+            </p>
           </div>
         </section>
 
-        {/* 6. CONTACT */}
-        <section id="contact" className="py-24 container mx-auto px-4">
+        {/* 7. CONTACT */}
+        <section id="contact" className="py-24 container mx-auto px-4 scroll-mt-16">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-primary mb-4">Get in Touch</h2>
+              <h2 className="text-3xl font-bold text-primary mb-4">Book a free diagnostic</h2>
               <p className="text-muted-foreground text-lg">
-                Request a quote or ask us about our product specifications.
+                Tell us which products you'd like reviewed. Ishan will reply within one business day to set a time.
               </p>
             </div>
 
             <div className="grid md:grid-cols-5 gap-12 lg:gap-24">
               <div className="md:col-span-3 bg-card rounded-xl border shadow-sm p-6 md:p-8">
                 <Form {...form}>
-                  <form 
-                    onSubmit={form.handleSubmit(onSubmit)} 
-                    className="space-y-6"
-                    data-netlify="true"
-                    name="contact"
-                  >
-                    <input type="hidden" name="form-name" value="contact" />
-                    
+                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" name="contact">
                     <div className="grid sm:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground">Full Name *</FormLabel>
+                            <FormLabel className="text-foreground">Full name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="John Smith" {...field} data-testid="input-name" />
+                              <Input placeholder="Your name" {...field} data-testid="input-name" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -585,9 +455,9 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                         name="business"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground">Business Name *</FormLabel>
+                            <FormLabel className="text-foreground">Brand or business name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Hotel Sydney" {...field} data-testid="input-business" />
+                              <Input placeholder="Your brand" {...field} data-testid="input-business" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -601,9 +471,9 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground">Email Address *</FormLabel>
+                            <FormLabel className="text-foreground">Email address *</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="john@example.com" {...field} data-testid="input-email" />
+                              <Input type="email" placeholder="you@yourbrand.com.au" {...field} data-testid="input-email" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -614,7 +484,7 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                         name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-foreground">Phone Number</FormLabel>
+                            <FormLabel className="text-foreground">Phone number</FormLabel>
                             <FormControl>
                               <Input placeholder="Optional" {...field} data-testid="input-phone" />
                             </FormControl>
@@ -629,12 +499,12 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-foreground">Message *</FormLabel>
+                          <FormLabel className="text-foreground">Which products would you like reviewed? *</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Please detail your quantity requirements or questions..." 
+                            <Textarea
+                              placeholder="Product names and two or three headline ingredients. Label photos can follow by email."
                               className="min-h-[150px] resize-y"
-                              {...field} 
+                              {...field}
                               data-testid="input-message"
                             />
                           </FormControl>
@@ -643,8 +513,12 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                       )}
                     />
 
-                    <Button type="submit" className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground h-12 text-lg" data-testid="btn-submit">
-                      Send Message
+                    <Button
+                      type="submit"
+                      className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground h-12 text-lg"
+                      data-testid="btn-submit"
+                    >
+                      Request my diagnostic
                     </Button>
                   </form>
                 </Form>
@@ -652,34 +526,35 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
 
               <div className="md:col-span-2 space-y-8">
                 <div className="bg-muted/50 p-8 rounded-xl border border-border h-full">
-                  <h3 className="text-xl font-semibold text-primary mb-6">Business Information</h3>
-                  
+                  <h3 className="text-xl font-semibold text-primary mb-6">Contact</h3>
+
                   <div className="space-y-6">
                     <div>
                       <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Company</h4>
-                      <p className="text-foreground font-medium">Harbour Arch Trading</p>
+                      <p className="text-foreground font-medium">Harbour Arch Trading Pty Ltd</p>
+                      <p className="text-foreground">Ishan Raghuvanshi CPA</p>
                     </div>
-                    
+
                     <div>
                       <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Location</h4>
                       <p className="text-foreground">Sydney, NSW<br />Australia</p>
                     </div>
-                    
+
                     <div>
                       <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Email</h4>
-                      <a href="mailto:info@harbourarchtrading.com.au" className="text-primary hover:underline">
-                        info@harbourarchtrading.com.au
+                      <a href={`mailto:${EMAIL}`} className="text-primary hover:underline break-all">
+                        {EMAIL}
                       </a>
                     </div>
-                    
+
                     <div>
                       <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Phone</h4>
-                      <p className="text-foreground">0432 263 400</p>
+                      <a href="tel:+61432263400" className="text-foreground hover:underline">{PHONE}</a>
                     </div>
-                    
+
                     <div>
                       <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Hours</h4>
-                      <p className="text-foreground">Monday–Friday, 9:00 AM – 5:00 PM AEST</p>
+                      <p className="text-foreground">Monday to Friday, 9am to 5pm Sydney time</p>
                     </div>
                   </div>
                 </div>
@@ -689,7 +564,7 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
         </section>
       </main>
 
-      {/* 7. FOOTER */}
+      {/* 8. FOOTER */}
       <footer className="bg-primary text-primary-foreground py-12 border-t border-primary-foreground/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -705,20 +580,20 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
                 <span className="font-medium text-xs tracking-widest text-primary-foreground/60 uppercase">Trading</span>
               </div>
             </div>
-            
+
             <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 text-sm text-primary-foreground/70">
-              <span>ABN: 55 697 775 447</span>
+              <span>ABN 55 697 775 447</span>
               <span className="hidden md:inline text-primary-foreground/30">|</span>
               <span>Sydney, NSW, Australia</span>
               <span className="hidden md:inline text-primary-foreground/30">|</span>
-              <a href="mailto:info@harbourarchtrading.com.au" className="hover:text-secondary transition-colors">
-                info@harbourarchtrading.com.au
+              <a href={`mailto:${EMAIL}`} className="hover:text-secondary transition-colors">
+                {EMAIL}
               </a>
             </div>
           </div>
-          
+
           <div className="mt-8 pt-8 border-t border-primary-foreground/10 text-center text-sm text-primary-foreground/50">
-            <p>&copy; {new Date().getFullYear()} Harbour Arch Trading. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Harbour Arch Trading Pty Ltd. All rights reserved.</p>
           </div>
         </div>
       </footer>

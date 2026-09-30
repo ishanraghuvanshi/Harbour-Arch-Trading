@@ -10,7 +10,7 @@ Last audited: 30 September 2026. Anything not yet confirmed is marked [TBC].
 
 - Single-page app built with React 19, TypeScript and Vite 6
 - Styling: Tailwind CSS 4 with shadcn/ui components (Radix UI underneath). Most files in `src/components/ui/` are unused library components.
-- Routing: `wouter`. There are two pages: `/` (`src/pages/Home.tsx`) and `/services` (`src/pages/Services.tsx`).
+- Routing: `wouter`. One page: `/` (`src/pages/Home.tsx`). The old `/services` address redirects to `/` inside the app. Site copy follows slides 5 and 6 of the India Market Entry decks.
 - Forms: `react-hook-form` with `zod` validation
 - No backend, no database and no server code. The build output is static files in `dist/`.
 
@@ -44,7 +44,7 @@ DNS (Domain Name System) records were checked through Google Public DNS on 30 Se
 | Nameservers | `dns1/dns2.registrar-servers.com` (Namecheap's DNS service) | Fact |
 | Registrar | Namecheap (confirmed by owner) | Fact |
 | Who holds the registrar login | Owner only | Fact |
-| Domain renewal date and auto-renew | Auto-renew is **off**. Renewal date [TBC] | Risk: if the domain lapses, the website and all email stop together |
+| Domain renewal date and auto-renew | Expires 25 April 2029. Auto-renew turned on 30 September 2026 | Fact (owner confirmed) |
 | Apex `harbourarchtrading.com.au` | A records point to GitHub Pages (185.199.108-111.153) | Fact |
 | `www` | CNAME record points to `ishanraghuvanshi.github.io` | Fact |
 | Email | MX record points to `smtp.google.com`, so Google Workspace | Fact |
@@ -65,7 +65,6 @@ Changing DNS can take the site or the inbox offline. No DNS change is made witho
 | Google Analytics 4 | Visitor analytics | `index.html` (ID `G-T4TQN9G91W`) | [TBC] |
 | Microsoft Clarity | Session recordings and heatmaps | `index.html` (ID `wppbdvo6e0`) | [TBC] |
 | Google Fonts | Loads the Inter typeface | `index.html` | No account needed |
-| Adobe Stock | Three photos in `src/assets/`, one shown on the live home page | Image files | **Not licensed.** Must be removed |
 
 The IDs above for Formspree, Google Analytics and Clarity are public by design. They show in every visitor's browser and are not secrets.
 
@@ -73,16 +72,14 @@ The IDs above for Formspree, Google Analytics and Clarity are public by design. 
 
 - No passwords, keys or tokens were found in any branch, in the full commit history, or in `harbour-arch-trading.tar.gz`. Scanned with gitleaks 8.21.2.
 - Collaborators: none. Deploy keys: none. Webhooks: none.
-- Installed GitHub Apps: Claude, Netlify and Netlify Coding. The two Netlify apps are unused and should be uninstalled.
-- `main` has no branch protection or ruleset.
+- Installed GitHub Apps: Claude only. The Netlify apps and the old Netlify project were removed on 30 September 2026.
+- `main` is protected: changes need a pull request.
 - Stale branches: `master` (fully contained in `main`) and `agent-typography-plugin-590c` (created by the Netlify bot in May 2026).
 
 ## Known issues
 
-- The site content describes hospitality linen supply. The current offer is the India market-entry service. [Covered in the accuracy check]
 - `node_modules/` (135 MB), `dist/` and `harbour-arch-trading.tar.gz` (16 MB) are committed to the repo. `.gitignore` is saved in UTF-16 encoding, so git does not read it and it has no effect.
-- The largest photo is 4.7 MB, which makes the site slow to load on a phone.
-- Three unlicensed Adobe Stock photos are in the repo. `AdobeStock_365294624` is shown on the live home page.
+- Unlicensed Adobe Stock photos were removed from the site on 30 September 2026. They remain in git history and inside `harbour-arch-trading.tar.gz`.
 - Microsoft Clarity records visitor sessions. The site has no privacy policy. [TBC: decide whether to keep Clarity]
 
 ## Rules for changes
