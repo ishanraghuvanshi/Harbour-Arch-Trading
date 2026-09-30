@@ -32,7 +32,7 @@ A clean `npm ci` followed by `npm run build` was tested on 30 September 2026 and
 - Host: **GitHub Pages**, deployed by GitHub Actions (`.github/workflows/static.yml`).
 - Trigger: every push to `main` builds the site and publishes it live, with no further approval step. Merging a PR is publishing.
 - The workflow installs with `pnpm`, but the repo only has an npm lockfile (`package-lock.json`). Builds have succeeded so far, but dependency versions in production are not pinned to the lockfile. [Fix proposed separately]
-- Custom domain: set in the repo's Settings → Pages. [TBC: confirm the setting reads `www.harbourarchtrading.com.au` and "Enforce HTTPS" is ticked]
+- Custom domain: `harbourarchtrading.com.au` (apex), set in the repo's Settings → Pages. "Enforce HTTPS" is on (checked 30 September 2026). The TLS certificate comes from Let's Encrypt and GitHub renews it automatically.
 - `netlify.toml` and `public/_redirects` are leftovers from an earlier Netlify setup and are not used. `public/CNAME` contains a misspelt domain (`harbourachtrading.com.au`). GitHub Actions deployments ignore that file, so it has no effect on the live site.
 
 ## Domain, DNS and email
@@ -68,6 +68,14 @@ Changing DNS can take the site or the inbox offline. No DNS change is made witho
 | Adobe Stock | Three photos in `src/assets/`, one shown on the live home page | Image files | **Not licensed.** Must be removed |
 
 The IDs above for Formspree, Google Analytics and Clarity are public by design. They show in every visitor's browser and are not secrets.
+
+## Security status (checked 30 September 2026)
+
+- No passwords, keys or tokens were found in any branch, in the full commit history, or in `harbour-arch-trading.tar.gz`. Scanned with gitleaks 8.21.2.
+- Collaborators: none. Deploy keys: none. Webhooks: none.
+- Installed GitHub Apps: Claude, Netlify and Netlify Coding. The two Netlify apps are unused and should be uninstalled.
+- `main` has no branch protection or ruleset.
+- Stale branches: `master` (fully contained in `main`) and `agent-typography-plugin-590c` (created by the Netlify bot in May 2026).
 
 ## Known issues
 
