@@ -73,12 +73,12 @@ The IDs above for Formspree and Google Analytics are public by design. They show
 - Collaborators: none. Deploy keys: none. Webhooks: none.
 - Installed GitHub Apps: Claude only. The Netlify apps and the old Netlify project were removed on 30 September 2026.
 - `main` is protected: changes need a pull request.
-- Stale branches: `master` (fully contained in `main`) and `agent-typography-plugin-590c` (created by the Netlify bot in May 2026).
+- Branches: `main` only. Stale branches were deleted on 30 September 2026.
 
 ## Known issues
 
 - `node_modules/`, `dist/` and `harbour-arch-trading.tar.gz` were removed from the repo on 30 September 2026, and `.gitignore` now keeps them out. They still exist in git history.
-- Unlicensed Adobe Stock photos were removed from the site on 30 September 2026. They remain in git history, which anyone can browse on the public repo.
+- Unlicensed Adobe Stock photos were removed from the site on 30 September 2026. They remain in git history, which anyone can browse on the public repo. Decision (owner, 30 September 2026): accept this risk and do not rewrite history or pay for a private repo. Revisit if a rights holder makes contact.
 - Microsoft Clarity was removed on 30 September 2026. Delete the Clarity project at clarity.microsoft.com to stop it holding past recordings.
 - Privacy notice: a short section at the bottom of the home page (`#privacy`), linked from the footer. Update it whenever a new tool collects visitor data.
 
