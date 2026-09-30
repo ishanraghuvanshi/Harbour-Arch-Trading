@@ -21,6 +21,9 @@ import { useToast } from "@/hooks/use-toast";
 const EMAIL = "ishan@harbourarchtrading.com.au";
 const PHONE = "0432 263 400";
 const LINKEDIN = "https://www.linkedin.com/in/ishan-raghuvanshi";
+// Google Calendar appointment schedule (Workspace Business Starter).
+const BOOKING_URL =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1r-NnITPbGtvpDVRHxEuy3Eo7j5O6xxoyxdH2xeuGMQsbNVXS2OIf8753mcD5QoGVk-WGvqFEi";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -173,7 +176,7 @@ export default function Home() {
               </a>
             ))}
             <Button asChild className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
-              <a href="#contact">Book a free diagnostic</a>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a free diagnostic</a>
             </Button>
           </nav>
 
@@ -200,7 +203,7 @@ export default function Home() {
               className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground"
               onClick={closeMobileMenu}
             >
-              <a href="#contact">Book a free diagnostic</a>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">Book a free diagnostic</a>
             </Button>
           </div>
         )}
@@ -223,7 +226,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8">
-                  <a href="#contact" data-testid="hero-book-btn">Book a free diagnostic</a>
+                  <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="hero-book-btn">Book a free diagnostic</a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5">
                   <a href="#stages" data-testid="hero-how-btn">See how it works</a>
@@ -431,8 +434,13 @@ export default function Home() {
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-primary mb-4">Book a free diagnostic</h2>
               <p className="text-muted-foreground text-lg">
-                Tell us which products you'd like reviewed. Ishan will reply within one business day to set a time.
+                Pick a time now, or send the form and Ishan will reply within one business day.
               </p>
+              <Button asChild size="lg" className="mt-6 bg-primary hover:bg-primary/90 text-primary-foreground px-8">
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" data-testid="contact-book-btn">
+                  Choose a time
+                </a>
+              </Button>
             </div>
 
             <div className="grid md:grid-cols-5 gap-12 lg:gap-24">
