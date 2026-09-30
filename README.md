@@ -62,7 +62,9 @@ Changing DNS can take the site or the inbox offline. No DNS change is made witho
 | Namecheap | Domain and DNS | Registrar dashboard | Owner only |
 | Google Workspace | Email for @harbourarchtrading.com.au | Google Admin console | Owner only |
 | Formspree | Receives contact-form submissions and forwards them by email | `src/pages/Home.tsx` (form ID `xkoypzag`) Submissions go to ishan@harbourarchtrading.com.au. Plan [TBC] |
-| Google Analytics 4 | Visitor analytics | `index.html` (ID `G-T4TQN9G91W`) | [TBC] |
+| Google Analytics 4 | Visitor analytics. Form leads tracked as `generate_lead` | `index.html` (ID `G-T4TQN9G91W`) | Owner (access confirmed 30 Sep 2026) |
+| Google Search Console | Search queries, indexing status | Property `https://harbourarchtrading.com.au/`, sitemap submitted 30 Sep 2026 | Owner |
+| Google Calendar appointment schedule | Diagnostic bookings (Workspace Business Starter, no extra cost) | Link in `src/pages/Home.tsx` (`BOOKING_URL`) | Owner |
 | Google Fonts | Loads the Inter typeface | `index.html` | No account needed |
 
 The IDs above for Formspree and Google Analytics are public by design. They show in every visitor's browser and are not secrets.
@@ -73,12 +75,12 @@ The IDs above for Formspree and Google Analytics are public by design. They show
 - Collaborators: none. Deploy keys: none. Webhooks: none.
 - Installed GitHub Apps: Claude only. The Netlify apps and the old Netlify project were removed on 30 September 2026.
 - `main` is protected: changes need a pull request.
-- Stale branches: `master` (fully contained in `main`) and `agent-typography-plugin-590c` (created by the Netlify bot in May 2026).
+- Branches: `main` only. Stale branches were deleted on 30 September 2026.
 
 ## Known issues
 
 - `node_modules/`, `dist/` and `harbour-arch-trading.tar.gz` were removed from the repo on 30 September 2026, and `.gitignore` now keeps them out. They still exist in git history.
-- Unlicensed Adobe Stock photos were removed from the site on 30 September 2026. They remain in git history, which anyone can browse on the public repo.
+- Unlicensed Adobe Stock photos were removed from the site on 30 September 2026. They remain in git history, which anyone can browse on the public repo. Decision (owner, 30 September 2026): accept this risk and do not rewrite history or pay for a private repo. Revisit if a rights holder makes contact.
 - Microsoft Clarity was removed on 30 September 2026. Delete the Clarity project at clarity.microsoft.com to stop it holding past recordings.
 - Privacy notice: a short section at the bottom of the home page (`#privacy`), linked from the footer. Update it whenever a new tool collects visitor data.
 
