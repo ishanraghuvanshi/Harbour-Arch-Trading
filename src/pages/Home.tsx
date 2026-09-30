@@ -115,6 +115,8 @@ export default function Home() {
       });
 
       if (response.ok) {
+        // Record the enquiry in Google Analytics as a lead (no form contents are sent).
+        (window as any).gtag?.("event", "generate_lead", { form: "diagnostic_request" });
         toast({
           title: "Message sent",
           description: "Thank you. Ishan will reply within one business day.",
