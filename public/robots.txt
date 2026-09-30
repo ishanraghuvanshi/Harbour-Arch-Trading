@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.harbourarchtrading.com.au/sitemap.xml
+Sitemap: https://harbourarchtrading.com.au/sitemap.xml
