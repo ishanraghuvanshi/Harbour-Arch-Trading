@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "wouter";
 import logoPath from "../assets/logo_transparent.png";
-import imgTowels from "../assets/AdobeStock_365294624_1778384305501.jpeg";
-import imgBedding from "../assets/AdobeStock_78653038_1778384305500.jpeg";
 import imgHero from "../assets/hero-trading-harbour.jpg";
 import imgBathMat from "../assets/bath-mat.png";
 import imgBedSheets from "../assets/bed-sheet-1.png";
@@ -109,21 +107,6 @@ const response = await fetch("https://formspree.io/f/xkoypzag", {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   const productData = [
-    {
-      id: "bath-towel",
-      name: "Bath Towels",
-      image: imgTowels,
-      imagePosition: "object-center",
-      imageAlt: "Harbour Arch Trading bath towels — stacked white commercial towels",
-      desc: "Commercial-grade 100% combed cotton bath towels designed for frequent high-temperature washing.",
-      specs: [
-        { label: "Dimensions", value: "70×140 cm" },
-        { label: "Weight", value: "500–550 GSM" },
-        { label: "Material", value: "100% combed cotton" },
-        { label: "Color", value: "Optical white" },
-        { label: "Care", value: "80°C industrial wash" },
-      ],
-    },
     {
       id: "hand-towel",
       name: "Hand Towels",
