@@ -80,7 +80,7 @@ The IDs above for Formspree and Google Analytics are public by design. They show
 - `node_modules/` (135 MB), `dist/` and `harbour-arch-trading.tar.gz` (16 MB) are committed to the repo. `.gitignore` is saved in UTF-16 encoding, so git does not read it and it has no effect.
 - Unlicensed Adobe Stock photos were removed from the site on 30 September 2026. They remain in git history and inside `harbour-arch-trading.tar.gz`.
 - Microsoft Clarity was removed on 30 September 2026. Delete the Clarity project at clarity.microsoft.com to stop it holding past recordings.
-- The site has no privacy notice, but Google Analytics' terms require one. [Proposed in a separate PR]
+- Privacy notice: a short section at the bottom of the home page (`#privacy`), linked from the footer. Update it whenever a new tool collects visitor data.
 
 ## Rules for changes
 

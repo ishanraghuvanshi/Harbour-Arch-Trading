@@ -573,9 +573,53 @@ export default function Home() {
             </div>
           </div>
         </section>
+        {/* 8. PRIVACY */}
+        <section id="privacy" className="py-16 border-t border-border bg-muted/30 scroll-mt-16">
+          <div className="container mx-auto px-4 max-w-3xl space-y-4 text-sm text-muted-foreground leading-relaxed">
+            <h2 className="text-xl font-semibold text-primary">Privacy</h2>
+            <p>
+              Harbour Arch Trading Pty Ltd (ABN 55 697 775 447) collects only what you send us and basic data on how
+              the site is used.
+            </p>
+            <p>
+              <span className="font-medium text-foreground">The form.</span> When you send the form, your name, brand
+              or business name, email, phone number (if given) and message go to {EMAIL} through Formspree, a form
+              service. Formspree keeps a copy on its servers, which may be outside Australia. We use your details to
+              reply and arrange your diagnostic. We don't sell them or share them for marketing.
+            </p>
+            <p>
+              <span className="font-medium text-foreground">Bookings.</span> If you book a diagnostic, your name, email
+              and booking answers are handled by Google Calendar and shared with us to hold the call.
+            </p>
+            <p>
+              <span className="font-medium text-foreground">Analytics.</span> The site uses Google Analytics, which sets
+              cookies to count visits and show how people find the site: pages viewed, device and approximate location.
+              Google processes this data and may store it outside Australia. You can block it in your browser settings
+              or with{" "}
+              <a
+                href="https://tools.google.com/dlpage/gaoptout"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                Google's opt-out add-on
+              </a>
+              .
+            </p>
+            <p>
+              <span className="font-medium text-foreground">Your information.</span> To ask what we hold about you, or to
+              have it corrected or deleted, email{" "}
+              <a href={`mailto:${EMAIL}`} className="underline hover:text-primary">
+                {EMAIL}
+              </a>
+              .
+            </p>
+            <p className="text-xs">Last updated 30 September 2026.</p>
+          </div>
+        </section>
       </main>
 
-      {/* 8. FOOTER */}
+      {/* 9. FOOTER */}
       <footer className="bg-primary text-primary-foreground py-12 border-t border-primary-foreground/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
@@ -604,7 +648,11 @@ export default function Home() {
           </div>
 
           <div className="mt-8 pt-8 border-t border-primary-foreground/10 text-center text-sm text-primary-foreground/50">
-            <p>&copy; {new Date().getFullYear()} Harbour Arch Trading Pty Ltd. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Harbour Arch Trading Pty Ltd. All rights reserved.
+              <span className="mx-3 text-primary-foreground/30">|</span>
+              <a href="#privacy" className="hover:text-secondary transition-colors">Privacy</a>
+            </p>
           </div>
         </div>
       </footer>
