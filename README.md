@@ -48,9 +48,10 @@ DNS (Domain Name System) records were checked through Google Public DNS on 30 Se
 | Apex `harbourarchtrading.com.au` | A records point to GitHub Pages (185.199.108-111.153) | Fact |
 | `www` | CNAME record points to `ishanraghuvanshi.github.io` | Fact |
 | Email | MX record points to `smtp.google.com`, so Google Workspace | Fact |
-| SPF (Sender Policy Framework) record | None found | Gap: anyone can send mail that claims to come from the domain, and real mail is more likely to land in spam |
-| DMARC (Domain-based Message Authentication, Reporting and Conformance) record | None found | Gap: same as above |
-| DKIM (DomainKeys Identified Mail) | Not checked, because the selector name is needed | [TBC] |
+| SPF (Sender Policy Framework) record | `v=spf1 include:_spf.google.com ~all` | Fact (checked 1 Oct 2026) |
+| DKIM (DomainKeys Identified Mail) | Google key published at `google._domainkey` | Fact (checked 1 Oct 2026) |
+| DMARC (Domain-based Message Authentication, Reporting and Conformance) record | `v=DMARC1; p=none; rua=mailto:ishan@harbourarchtrading.com.au`. Monitor only; daily reports go to ishan@ | Fact. Next step: move to `p=quarantine` once reports look clean (DNS change, owner approval) |
+| Other TXT | `google-site-verification=...` from Search Console | Harmless, leave in place |
 
 Changing DNS can take the site or the inbox offline. No DNS change is made without the owner's approval.
 
