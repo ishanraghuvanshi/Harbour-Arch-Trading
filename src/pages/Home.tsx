@@ -42,27 +42,27 @@ const stages = [
     stage: "Stage 1",
     name: "Readiness assessment",
     what: "Your products assessed against Indian law, item by item.",
-    fee: "A$3,500 + GST (food and beverage) · A$5,500 + GST (supplements)",
-    decision: "Proceed or stop, on evidence",
+    fee: "A$3,500 + GST (food and beverage) · A$5,500 + GST (supplements and nutraceuticals)",
+    decision: "Proceed or stop, on evidence.",
   },
   {
     stage: "Stage 2",
     name: "Compliance execution",
     what: "Registrations, label artwork, approvals for anything flagged in Stage 1.",
     fee: "Scoped after Stage 1",
-    decision: "Priced against real findings",
+    decision: "Proceed on a fixed quote.",
   },
   {
     stage: "Stage 3",
     name: "Market entry",
     what: "Importer of record, first consignment, pricing and channel terms.",
     fee: "Scoped at Stage 2 close",
-    decision: "Your call on structure",
+    decision: "Your call on structure.",
   },
   {
     stage: "Stage 4",
     name: "Distribution",
-    what: "Harbour Arch as your India distributor, offered and never assumed.",
+    what: "Harbour Arch as your India distributor, once our India entity is live.",
     fee: "Commercial terms",
     decision: "Optional. You choose.",
   },
@@ -252,6 +252,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <p className="text-xs text-muted-foreground mt-5">Findings are general information, not advice.</p>
             </div>
           </div>
         </section>
@@ -326,8 +327,8 @@ export default function Home() {
           </div>
 
           <p className="text-sm text-muted-foreground mt-6 max-w-3xl">
-            Delivered from Sydney, with regulatory and commercial contacts in Delhi and Bangalore. No incumbent
-            distributor relationships, so nothing competes with your brand for attention.
+            Delivered from Sydney, with contacts in Delhi and Bangalore. No incumbent distributor relationships, so
+            nothing competes with your brand for attention.
           </p>
         </section>
 
@@ -399,10 +400,6 @@ export default function Home() {
               <li>
                 <span className="font-medium text-foreground">What we need:</span> formulation, artwork, shelf life and
                 ex-works pricing. A mutual NDA is signed before anything is sent.
-              </li>
-              <li>
-                <span className="font-medium text-foreground">Stage 2 credit:</span> sign Stage 2 within 30 days of
-                receiving the report and 50% of your Stage 1 fee is credited against it.
               </li>
             </ul>
           </div>
