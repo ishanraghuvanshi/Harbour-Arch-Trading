@@ -252,6 +252,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              <p className="text-xs text-muted-foreground mt-5">Findings are general information, not advice.</p>
             </div>
           </div>
         </section>
@@ -326,7 +327,7 @@ export default function Home() {
           </div>
 
           <p className="text-sm text-muted-foreground mt-6 max-w-3xl">
-            Delivered from Sydney, with regulatory and commercial contacts in Delhi and Bangalore. No incumbent
+            Delivered from Sydney, with commercial contacts in Delhi and Bangalore. No incumbent
             distributor relationships, so nothing competes with your brand for attention.
           </p>
         </section>
@@ -339,6 +340,9 @@ export default function Home() {
               <p className="text-muted-foreground text-lg">
                 A written report rating every ingredient, additive, claim and label element against the governing
                 Indian instrument.
+              </p>
+              <p className="text-muted-foreground mt-3">
+                We take on two Stage 1 engagements at a time, so start dates may be scheduled.
               </p>
             </div>
 
@@ -387,11 +391,15 @@ export default function Home() {
               ))}
             </div>
 
+            <div className="mt-6 bg-background rounded-xl border border-border p-5 md:p-6">
+              <p className="text-foreground">
+                <span className="font-semibold">Included for food, beverage and supplements:</span> landed cost
+                modelled to shelf price, tariff classification with both duty scenarios, label gap matrix and claims
+                disposition.
+              </p>
+            </div>
+
             <ul className="mt-10 space-y-3 text-muted-foreground max-w-3xl">
-              <li>
-                <span className="font-medium text-foreground">Also included:</span> landed cost modelled to shelf price,
-                tariff classification with both duty scenarios, label gap matrix and claims disposition.
-              </li>
               <li>
                 <span className="font-medium text-foreground">You receive:</span> a written report, plus a meeting in
                 Sydney or a call elsewhere.
