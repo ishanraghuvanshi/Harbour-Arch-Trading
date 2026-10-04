@@ -10,7 +10,7 @@ Last audited: 30 September 2026. Anything not yet confirmed is marked [TBC].
 
 - Single-page app built with React 19, TypeScript and Vite 6
 - Styling: Tailwind CSS 4 with shadcn/ui components (Radix UI underneath). Most files in `src/components/ui/` are unused library components.
-- Routing: `wouter`. One page: `/` (`src/pages/Home.tsx`). The old `/services` address redirects to `/` inside the app. Site copy follows slides 5 and 6 of the India Market Entry decks.
+- Routing: `wouter`. One page: `/` (`src/pages/Home.tsx`). The old `/services` address redirects to `/` inside the app. Site copy is a subset of the India Market Entry pitch decks, which are the source of truth. The site publishes no prices (owner decision, 4 October 2026); prices appear only in the decks, which go to prospects directly.
 - Forms: `react-hook-form` with `zod` validation
 - No backend, no database and no server code. The build output is static files in `dist/`.
 
