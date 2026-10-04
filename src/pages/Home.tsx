@@ -42,7 +42,7 @@ const stages = [
     stage: "Stage 1",
     name: "Readiness assessment",
     what: "Your products assessed against Indian law, item by item.",
-    fee: "A$3,500 + GST (food and beverage) · A$5,500 + GST (supplements and nutraceuticals)",
+    fee: "Fixed fee, agreed upfront",
     decision: "Proceed or stop, on evidence.",
   },
   {
@@ -72,15 +72,15 @@ const stageOnePricing = [
   {
     sector: "Food and beverage",
     title: "India Market Readiness Assessment",
-    fee: "A$3,500 + GST",
-    skus: "Five SKUs. Additional SKUs A$400 + GST each.",
+    fee: "Fixed scope, fixed fee, agreed before we start. Begin with a free 45-minute diagnostic.",
+    skus: "Five SKUs.",
     time: "4 weeks",
   },
   {
     sector: "Supplements and nutraceuticals",
     title: "Formulation & Compliance Mapping",
-    fee: "A$5,500 + GST",
-    skus: "Five SKUs. Additional SKUs A$650 + GST each.",
+    fee: "Fixed scope, fixed fee, agreed before we start. Begin with a free 45-minute diagnostic.",
+    skus: "Five SKUs.",
     time: "6 weeks",
   },
 ];
@@ -367,7 +367,7 @@ export default function Home() {
                 <div key={p.sector} className="bg-background rounded-xl border border-border shadow-sm p-6 md:p-8">
                   <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-2">{p.sector}</p>
                   <h3 className="text-xl font-semibold text-primary mb-4">{p.title}</h3>
-                  <div className="text-3xl font-bold text-primary mb-6">{p.fee}</div>
+                  <p className="text-base font-medium text-primary mb-6">{p.fee}</p>
                   <dl className="space-y-3 text-sm">
                     <div className="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-border/60 pb-3">
                       <dt className="font-medium text-foreground">Products</dt>
