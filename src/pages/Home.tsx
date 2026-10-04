@@ -146,7 +146,7 @@ export default function Home() {
   const navLinks = [
     { href: "#diagnostic", label: "Free diagnostic" },
     { href: "#stages", label: "How it works" },
-    { href: "#pricing", label: "Pricing" },
+    { href: "#stage-1", label: "Stage 1" },
     { href: "#about", label: "About" },
   ];
 
@@ -333,13 +333,16 @@ export default function Home() {
         </section>
 
         {/* 5. STAGE 1 PRICING */}
-        <section id="pricing" className="py-24 bg-muted/40 border-y border-border/40 scroll-mt-16">
+        <section id="stage-1" className="py-24 bg-muted/40 border-y border-border/40 scroll-mt-16">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="max-w-3xl mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Stage 1: fixed scope, fixed fee</h2>
               <p className="text-muted-foreground text-lg">
                 A written report rating every ingredient, additive, claim and label element against the governing
                 Indian instrument.
+              </p>
+              <p className="text-muted-foreground text-lg mt-3">
+                Covers up to five products. More can be added, quoted at the diagnostic.
               </p>
             </div>
 
