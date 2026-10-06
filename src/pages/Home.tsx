@@ -413,7 +413,7 @@ export default function Home() {
           <div className="container mx-auto px-4 max-w-3xl space-y-6 text-lg leading-relaxed">
             <h2 className="text-3xl font-bold">About</h2>
             <p className="text-primary-foreground/90">
-              Harbour Arch Trading Pty Ltd is a Sydney company run by Ishan Raghuvanshi CPA. Ishan was previously at
+              Harbour Arch Trading Pty Ltd is a Sydney company run by Ishan Raghuvanshi. Ishan was previously at
               EY and PwC, and worked in risk, audit and commercial operations at De Lage Landen, a Rabobank
               subsidiary.
             </p>
@@ -543,7 +543,7 @@ export default function Home() {
                     <div>
                       <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-2">Company</h4>
                       <p className="text-foreground font-medium">Harbour Arch Trading Pty Ltd</p>
-                      <p className="text-foreground">Ishan Raghuvanshi CPA</p>
+                      <p className="text-foreground">Ishan Raghuvanshi</p>
                     </div>
 
                     <div>
