@@ -2,7 +2,7 @@
 
 Source for www.harbourarchtrading.com.au, the website of Harbour Arch Trading Pty Ltd (ABN 55 697 775 447).
 
-Owner: Ishan Raghuvanshi CPA. Every change that reaches the live site goes through a pull request (PR) and needs his approval before merge.
+Owner: Ishan Raghuvanshi. Every change that reaches the live site goes through a pull request (PR) and needs his approval before merge.
 
 Last audited: 30 September 2026. Anything not yet confirmed is marked [TBC].
 
@@ -90,3 +90,4 @@ The IDs above for Formspree and Google Analytics are public by design. They show
 - Never commit directly to `main`. Make each change on a branch and open a PR, one change per PR.
 - Never commit passwords, API (application programming interface) keys or tokens.
 - Update this README whenever something about the setup changes.
+- Site copy shows the owner as "Ishan Raghuvanshi", without "CPA" (decision D-008, approved 7 October 2026). Do not add the designation back without a new decision.
